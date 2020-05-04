@@ -13,8 +13,8 @@ button1.addEventListener("click", function() {
         const author = document.createElement("h3");
         author.textContent = response.data[i].author;
         bad.style.color = "#d49627";
-        bad.style.marginLeft = "100px";
-        bad.style.marginRight = "100px";
+        bad.style.marginLeft = "50px";
+        bad.style.marginRight = "50px";
         author.style.color = "white";
         document.body.appendChild(bad);
         document.body.appendChild(author);
