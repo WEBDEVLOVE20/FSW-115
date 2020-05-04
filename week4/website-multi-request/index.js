@@ -1,7 +1,7 @@
 
 const button1 = document.createElement("BUTTON");
-button1.innerHTML = "BREAKING BAD";
-button1.style.alignContent = "center"
+button1.innerHTML = "CLICK ME";
+button1.style.fontSize = "25px"
 document.body.appendChild(button1);
 
 button1.addEventListener("click", function() {
@@ -13,6 +13,10 @@ button1.addEventListener("click", function() {
         bad.textContent = response.data[i].quote
         const author = document.createElement("h3")
         author.textContent = response.data[i].author
+        bad.style.color = "#d49627"
+        bad.style.marginLeft = "100px"
+        bad.style.marginRight = "100px"
+        author.style.color = "white"
         document.body.appendChild(bad)
         document.body.appendChild(author)
         }
