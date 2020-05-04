@@ -1,7 +1,6 @@
-
 const button2 = document.createElement("BUTTON");
 button2.innerHTML = "CLICK ME";
-button2.style.fontSize = "25px"
+button2.style.fontSize = "25px";
 document.body.appendChild(button2);
 
 button2.addEventListener("click", function() {
@@ -19,4 +18,4 @@ button2.addEventListener("click", function() {
     }
 })
 .catch(error => console.log(error))
-})
+});

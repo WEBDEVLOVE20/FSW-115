@@ -17,8 +17,8 @@ nav > a {
     color: black;
     text-decoration: none;
     font-size: 22px;
-    background-color: #d3df57;
-    border-radius: 10px;
+    background-color: #d0e155;
+    border-radius: 5px;
     padding: 5px;
     margin-top: 20px;
 }
@@ -37,5 +37,4 @@ header {
 
 div {
     color: lime;
-    
 }
