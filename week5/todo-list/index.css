@@ -29,9 +29,12 @@ input {
     height: 40px;
     border: none;
     font-size: 1.5em;
-    box-shadow: 5px 5px 5px grey;
     padding-left: 10px;
     margin-right: 20px;
+}
+
+.addtodo {
+  box-shadow: 5px 5px 5px grey;
 }
 
 button {
@@ -44,12 +47,11 @@ button {
     box-shadow: 5px 5px 5px grey;
 }
 
-.alltasks{
+.alltasks {
   background-color: whitesmoke;
   margin-top: 25px;
-  margin-left: 15%;
-  margin-right: 15%;
-  padding-top: 10px;
+  margin-left: 10%;
+  margin-right: 10%;
   padding-bottom: 10px;
   padding-right: 40px;
 }
