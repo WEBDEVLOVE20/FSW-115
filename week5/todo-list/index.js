@@ -1,13 +1,23 @@
 axios.get("https://api.vschool.io/[kelly.compton]/todo")
 .then(response => {
     for (let i = 0; i < response.data.length; i++) {
-    const tasks = document.createElement("li")
+    const li = document.createElement("li")
+    li.textContent = response.data[i].title
     const ul = document.getElementsByTagName("ul")[0]
-    ul.append(tasks)
-    tasks.classList = "list"
-    tasks.textContent = response.data[i].title
+    ul.append(li)
+    li.classList = "list"
+    // const button = document.createElement("button")
+    // button.textContent = "delete"
+    // button.id = data[i]._id
+    // document.getElementsByTagName("li").appendChild(button)
+    // button.addEventListener("click", (event) => {
+    //     axios.delete("https://api.vschool.io/[kelly.compton]/todo" + event.target.id)
+    //     .then(response => console.log(response.data))
+    //     .catch(error => console.log())
+    // })
+
     if (response.data[i].completed === true) {
-        tasks.style.textDecorationLine = "line-through" 
+        li.style.textDecorationLine = "line-through" 
 }
     document.body.appendChild
 }
@@ -32,6 +42,12 @@ form.addEventListener("submit", function(event){
         .catch(error => console.log(error))
 })
 
+// axios.put("https://api.vschool.io/[kelly.compton]/todo" + else.)
+
+
+
+//  .then(response => (response.data))
+//  .catch(error => console.log(error))
 
     
 //     // LISTS THE TODO TITLES TO THE DOM
@@ -57,15 +73,9 @@ form.addEventListener("submit", function(event){
     // getData()
     
     // // FORM FOR THE POST REQUEST
-    const todoForm = document["todo-form"]
-    todoForm.addEventListener("submit", function(e){
-    e.preventDefault()
-    const newTodo = {
-    title: todoForm.title.value
-    }
-    todoForm.title.value = ""
-    axios.post("https://api.vschool.io/[kelly.compton]/todo", newTodo)
-    .then(res => getData())
-    .catch(err => console.log(err))
-    })
+    // const todoForm = document["form"]
+    // todoForm.addEventListener("submit", function(e){
+    // e.preventDefault()
+
+  
     
