@@ -13,13 +13,14 @@ async function getData(){
 }
 getData()
 
-const mainInfo = document.getElementById("info")
 
+
+const mainInfo = document.getElementById("info")
 
 function listToDom(rickOrigin, rickLoc, rick) {
 
     const nameh1 = document.createElement("h1")
-    nameh1.textContent = "Name: " + rick.data.name
+    nameh1.textContent = rick.data.name
     mainInfo.appendChild(nameh1)
     const pic = document.createElement("img")
     pic.src = rick.data.image
@@ -46,7 +47,6 @@ function listToDom(rickOrigin, rickLoc, rick) {
 
 
 
-
 const div = document.getElementById("episodes")
 
 async function rickAndMorty () {
@@ -63,7 +63,7 @@ async function rickAndMorty () {
     .then(response => { 
         for (let i = 0; i < episodes.length; i++) {
         const name = document.createElement("h1")
-        name.textContent = "Episode Name: " + response[i].data.name
+        name.textContent = "Episode Title: " + response[i].data.name
         div.appendChild(name)
         const eps = document.createElement("h2") 
         eps.textContent = "Season/Episode : " + response[i].data.episode

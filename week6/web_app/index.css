@@ -1,0 +1,85 @@
+html {
+    text-align: center;
+    font-family: 'Mountains of Christmas', cursive;
+    background-color: greenyellow;
+}
+
+header {
+    font-size: 28px;
+    margin-bottom: 80px;
+    text-shadow: 3px 3px 3px lightblue
+}
+
+.wink {
+    width: 350px;
+}
+
+.earth {
+    width: 350px;
+}
+
+#info {
+    margin-top: 100px;
+}
+
+.theBird {
+    width: 300px;
+}
+
+@media only screen and (min-width: 600px) { 
+
+html {
+    font-size: 23px;
+}
+
+header {
+    font-size: 40px;
+}
+
+.wink {
+    width: 500px;
+}
+
+.earth {
+    width: 500px;
+}
+
+.dance {
+    width: 350px;
+}
+
+#info {
+    margin-top: 100px;
+}
+
+.theBird {
+    width: 350px;
+}
+}
+
+@media only screen and (min-width: 1024px) { 
+
+html {
+    font-size: 30px;
+}
+    
+header {
+    font-size: 45px;
+}
+    
+.wink {
+    width: 450px;
+}
+    
+.earth {
+    width: 850px;
+}
+    
+.dance {
+    width: 500px;
+}
+    
+.theBird {
+    width: 450px;
+}
+}
