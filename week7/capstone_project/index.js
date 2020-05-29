@@ -13,26 +13,21 @@ axios.get("https://api.vschool.io/[kelly.compton]/todo")
 
     const h2 = document.createElement("h2");
     h2.textContent = response.data[i].title;
-    h2.setAttribute("class", "myP")
-    h2.setAttribute("contenteditable", "false")
     li.appendChild(h2);
 
     const h3 = document.createElement("h3");
-    h3.textContent = "Products needed: " + response.data[i].description;
-    // h3.setAttribute("class", "myP")
-    h3.setAttribute("contenteditable", "false")
+    h3.textContent =  "- " + response.data[i].description;
     li.appendChild(h3);
 
     const h4 = document.createElement("h4");
-    h4.textContent = "$" + response.data[i].price;
-    // h4.setAttribute("class", "myP")
-    h4.setAttribute("contenteditable", "false")
+    h4.textContent = "$ " + response.data[i].price;
     li.appendChild(h4);
 
     //Checkbox - Put
     const checkbox = document.createElement("input");
     checkbox.type = "checkbox";
     checkbox.name = "checkbox";
+    
     checkbox.id = response.data[i]._id;
     if (response.data[i].completed === true) {
         checkbox.checked = true;
@@ -50,7 +45,9 @@ axios.get("https://api.vschool.io/[kelly.compton]/todo")
             updates = false;
         }
         axios.put("https://api.vschool.io/[kelly.compton]/todo/" + event.currentTarget.id, {completed:updates})
-        .then(response => (response.data))
+        .then(response => {response.data
+        location.reload()
+        })
         .catch(error => console.log(error))
     })
 
@@ -63,7 +60,9 @@ axios.get("https://api.vschool.io/[kelly.compton]/todo")
         li.appendChild(button);
         button.addEventListener("click", (event) => {
         axios.delete("https://api.vschool.io/[kelly.compton]/todo/" + event.currentTarget.id)
-            .then(response => console.log(response.data))
+            .then(response => {response.data
+            location.reload()
+            })
             .catch(error => console.log(error))
     })
 
@@ -78,29 +77,34 @@ axios.get("https://api.vschool.io/[kelly.compton]/todo")
      edit.id = response.data[i]._id
      li.appendChild(edit);
 
+     const submits = document.createElement("button");
+     submits.textContent = "Submit";
+     submits.style.marginLeft = "30px"
+     submits.id = response.data[i]._id;
 
     edit.addEventListener("click", (e) => {
-    
-        var x = document.getElementById("box");
+
+        const x = document.getElementById("box");
         if (x.style.display === "none") {
           x.style.display = "block";
-          edit.textContent = "Submit"
         } else {
-          x.style.display = "none";
+          x.style.display = "block";
         }
+        
+        li.appendChild(submits);
     })
 
-    const secForm = document.getElementById("box");
+    // const secForm = document.getElementById("box");
 
-    // const submitBut = document.getElementsByClassName("button1")[0];
-    // submitBut.id = response.data[i]._id
+    // // const submitBut = document.getElementsByClassName("button1")[0];
+    // // submitBut.id = response.data[i]._id
 
     // const submits = document.createElement("button");
-    // submits.textContent = "Submit Edit";
+    // submits.textContent = "Submit";
     // submits.id = response.data[i]._id;
-    // secForm.appendChild(submits);
+    // li.appendChild(submits);
 
-    edit.addEventListener("click", function(event){
+    submits.addEventListener("click", function(event){
         //event.preventDefault()
     
     var t = document.getElementById("titleInput").value;
@@ -124,7 +128,9 @@ axios.get("https://api.vschool.io/[kelly.compton]/todo")
             description:y,
             price:z
     })
-        .then(response => (response.data))
+        .then(response => {response.data 
+            location.reload()
+        })
         .catch(error => console.log(error))
 
     })
@@ -148,7 +154,9 @@ form.addEventListener("submit", function(event){
     }
     axios.post("https://api.vschool.io/[kelly.compton]/todo", newTodo)
         .then(response => {response.data 
-        form.reset()})
+        form.reset()
+        location.reload()
+    })
         .catch(error => console.log(error))
        
 })
