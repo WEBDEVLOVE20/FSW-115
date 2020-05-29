@@ -5,7 +5,7 @@
 
 
 html {
-    background-color: #FEFAD4;
+    background-color: black;
     font-family: sans-serif;
     color: #765D69;
 }
@@ -48,7 +48,6 @@ input {
 }
 
 
-
 button {
     font-size: 1.5em;
     color: palevioletred;
@@ -62,17 +61,14 @@ button {
 
 .alltasks {
   margin-top: 100px;
-  
 }
 
 ul {
   list-style-type: none;
-
 }
 
 li {
   padding: 10px;
-
 }
 
 ul li:nth-child(odd) {
@@ -81,4 +77,8 @@ ul li:nth-child(odd) {
 
 ul li:hover {
   background: lightgrey;
+}
+
+#box {
+  display: none;
 }
