@@ -1,13 +1,14 @@
 const form = document.getElementById("forms");
 
-//get request
+//GET REQUEST
 axios.get("https://api.vschool.io/[kelly.compton]/todo")
 .then(response => {
     
     for (let i = 0; i < response.data.length; i++) {
 
+    //TODO LIST TEXT
     const li = document.createElement("li");
-    const ul = document.getElementsByTagName("ul")[0]
+    const ul = document.getElementsByTagName("ul")[0];
     ul.prepend(li);
     li.classList = "list";
 
@@ -23,20 +24,21 @@ axios.get("https://api.vschool.io/[kelly.compton]/todo")
     h4.textContent = "$ " + response.data[i].price;
     li.appendChild(h4);
 
-    //Checkbox - Put
+    //CHECKBOX - LINE-THROUGH
     const checkbox = document.createElement("input");
     checkbox.type = "checkbox";
     checkbox.name = "checkbox";
-    
     checkbox.id = response.data[i]._id;
+    li.appendChild(checkbox);
+
     if (response.data[i].completed === true) {
         checkbox.checked = true;
         h2.style.textDecorationLine = "line-through";
         h3.style.textDecorationLine = "line-through";
         h4.style.textDecorationLine = "line-through";  
     }
-    li.appendChild(checkbox);
     
+    //CHECKBOX - EVENT LISTENER
     checkbox.addEventListener("click", (event) => {
         let updates;
         if (checkbox.checked) {
@@ -46,19 +48,18 @@ axios.get("https://api.vschool.io/[kelly.compton]/todo")
         }
         axios.put("https://api.vschool.io/[kelly.compton]/todo/" + event.currentTarget.id, {completed:updates})
         .then(response => {response.data
-        location.reload()
-        })
+        location.reload()})
         .catch(error => console.log(error))
     })
 
+    //DELETE BUTTON
+    const button = document.createElement("button");
+    button.textContent = "Delete";
+    button.id = response.data[i]._id;
+    li.appendChild(button);
 
-    //delete button
-    const button = document.createElement("button")
-        button.textContent = "Delete";
-        button.id = response.data[i]._id
-        
-        li.appendChild(button);
-        button.addEventListener("click", (event) => {
+    //DELETE - EVENT LISTENER
+    button.addEventListener("click", (event) => {
         axios.delete("https://api.vschool.io/[kelly.compton]/todo/" + event.currentTarget.id)
             .then(response => {response.data
             location.reload()
@@ -66,22 +67,20 @@ axios.get("https://api.vschool.io/[kelly.compton]/todo")
             .catch(error => console.log(error))
     })
 
-
-
-
-
-
+    //EDIT BUTTON
     const edit = document.createElement("button");
-     edit.textContent = "Edit";
-     edit.style.marginLeft = "30px"
-     edit.id = response.data[i]._id
-     li.appendChild(edit);
+    edit.textContent = "Edit";
+    edit.style.marginLeft = "30px";
+    edit.id = response.data[i]._id;
+    li.appendChild(edit);
 
-     const submits = document.createElement("button");
-     submits.textContent = "Submit";
-     submits.style.marginLeft = "30px"
-     submits.id = response.data[i]._id;
+    //SUBMIT BUTTON
+    const submits = document.createElement("button");
+    submits.textContent = "Submit";
+    submits.style.marginLeft = "30px";
+    submits.id = response.data[i]._id;
 
+    //EDIT FORM - EVENT LISTENER
     edit.addEventListener("click", (e) => {
 
         const x = document.getElementById("box");
@@ -94,84 +93,53 @@ axios.get("https://api.vschool.io/[kelly.compton]/todo")
         li.appendChild(submits);
     })
 
-    // const secForm = document.getElementById("box");
-
-    // // const submitBut = document.getElementsByClassName("button1")[0];
-    // // submitBut.id = response.data[i]._id
-
-    // const submits = document.createElement("button");
-    // submits.textContent = "Submit";
-    // submits.id = response.data[i]._id;
-    // li.appendChild(submits);
-
-    submits.addEventListener("click", function(event){
-        //event.preventDefault()
+    //SUBMIT EDIT - EVENT LISTENER - PUT
+    submits.addEventListener("click", (event) => {
     
-    var t = document.getElementById("titleInput").value;
-    var y = document.getElementById("detailsInput").value;
-    var z = document.getElementById("numberInput").value;
+        const t = document.getElementById("titleInput").value;
+        const d = document.getElementById("detailsInput").value;
+        const p = document.getElementById("numberInput").value;
 
-    if (t.length == 0) {
-        t = response.data[i].title
-    }
-
-    if (y.length == 0) {
-        y = response.data[i].description
-    }
-    if (z.length == 0) {
-        z = response.data[i].price
-    }
+        if (t.length == 0) {
+        t = response.data[i].title;
+        }
+        if (d.length == 0) {
+        d = response.data[i].description;
+        }
+        if (p.length == 0) {
+        p = response.data[i].price;
+        }
        
-    
-        axios.put("https://api.vschool.io/[kelly.compton]/todo/" + event.currentTarget.id, {
+        axios.put("https://api.vschool.io/[kelly.compton]/todo/" + event.currentTarget.id,     {
             title:t,
             description:y,
             price:z
-    })
-        .then(response => {response.data 
-            location.reload()
-        })
-        .catch(error => console.log(error))
-
+            })
+            .then(response => {response.data 
+            location.reload()})
+            .catch(error => console.log(error))
     })
 
-    }
-
+}
 })
-
-// }
-// })
 .catch(error => console.log(error))
 
-// post--new task
+
+
+// NEW TODO - POST
 form.addEventListener("submit", function(event){
-    event.preventDefault()
+    event.preventDefault();
 
     const newTodo = {
         title: form.title.value,
         description: form.description.value,
         price: form.price.value
     }
+
     axios.post("https://api.vschool.io/[kelly.compton]/todo", newTodo)
         .then(response => {response.data 
         form.reset()
         location.reload()
-    })
-        .catch(error => console.log(error))
-       
+        })
+        .catch(error => console.log(error))    
 })
-
-
-
-
-// function myFunction(buttons) {
-//     var x = document.getElementById("myP")
-//     if (x.contentEditable == "true") {
-//       x.contentEditable = "false";
-//       buttons.innerHTML = "Enable content of p to be editable!";
-//     } else {
-//       x.contentEditable = "true";
-//       buttons.innerHTML = "Disable content of p to be editable!";
-//     }
-//   }
-
