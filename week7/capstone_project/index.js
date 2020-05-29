@@ -96,34 +96,34 @@ axios.get("https://api.vschool.io/[kelly.compton]/todo")
     //SUBMIT EDIT - EVENT LISTENER - PUT
     submits.addEventListener("click", (event) => {
     
-        const t = document.getElementById("titleInput").value;
-        const d = document.getElementById("detailsInput").value;
-        const p = document.getElementById("numberInput").value;
+        let t = document.getElementById("titleInput").value;
+        let d = document.getElementById("detailsInput").value;
+        let p = document.getElementById("numberInput").value;
 
-        if (t.length == 0) {
+        if (t.length === 0) {
         t = response.data[i].title;
         }
-        if (d.length == 0) {
+        if (d.length === 0) {
         d = response.data[i].description;
         }
-        if (p.length == 0) {
+        if (p.length === 0) {
         p = response.data[i].price;
         }
        
-        axios.put("https://api.vschool.io/[kelly.compton]/todo/" + event.currentTarget.id,     {
+        axios.put("https://api.vschool.io/[kelly.compton]/todo/" + event.currentTarget.id, {
             title:t,
-            description:y,
-            price:z
+            description:d,
+            price:p
             })
             .then(response => {response.data 
-            location.reload()})
+            location.reload()
+            })
             .catch(error => console.log(error))
     })
 
 }
 })
 .catch(error => console.log(error))
-
 
 
 // NEW TODO - POST
