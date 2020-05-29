@@ -28,6 +28,8 @@ axios.get("https://api.vschool.io/[kelly.compton]/todo")
     const checkbox = document.createElement("input");
     checkbox.type = "checkbox";
     checkbox.name = "checkbox";
+    checkbox.style.marginRight = "20px";
+    checkbox.style.marginLeft = "10px";
     checkbox.id = response.data[i]._id;
     li.appendChild(checkbox);
 
